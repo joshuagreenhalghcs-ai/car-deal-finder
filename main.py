@@ -1,3 +1,35 @@
+def rate_deal(profit):
+
+    if profit >= 5000:
+        print("Perfect deal!")
+
+    elif profit >= 2000:
+        print("Amazing deal!")
+
+    elif profit >= 1000:
+        print("Good deal!")
+
+    elif profit > 0:
+        print("Small profit")
+
+    else:
+        print("Bad deal")
+
+
+def show_totals(total_profit, cars_checked):
+
+    average_profit = total_profit / cars_checked
+
+    print("Total profit so far:")
+    print(total_profit)
+
+    print("Cars checked:")
+    print(cars_checked)
+
+    print("Average profit:")
+    print(average_profit)
+
+
 print("Car Deal Finder")
 
 running = True
@@ -18,26 +50,9 @@ while running:
     print("Profit:")
     print(profit)
 
-    if profit >= 5000:
-        print("Perfect deal!")
+    rate_deal(profit)
 
-    elif profit >= 2000:
-        print("Amazing deal!")
-
-    elif profit >= 1000:
-        print("Good deal!")
-
-    elif profit > 0:
-        print("Small profit")
-
-    else:
-        print("Bad deal")
-
-    print("Total profit so far:")
-    print(total_profit)
-
-    print("Cars checked:")
-    print(cars_checked)
+    show_totals(total_profit, cars_checked)
 
     again = input("Check another car? yes/no: ")
 
@@ -45,4 +60,3 @@ while running:
         running = False
 
 print("Program ended")
-average_profit = total_profit / cars_checked
