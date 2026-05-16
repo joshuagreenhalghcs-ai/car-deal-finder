@@ -38,20 +38,29 @@ total_profit = 0
 cars_checked = 0
 
 cars = []
+
 try:
 
     file = open("cars.txt", "r")
 
-    saved_data = file.read()
-
-    print("Saved Car Records:")
-    print(saved_data)
+    lines = file.readlines()
 
     file.close()
 
+    for i in range(0, len(lines), 5):
+
+        car = {
+            "name": lines[i].strip(),
+            "buy": int(lines[i + 1].strip()),
+            "sell": int(lines[i + 2].strip()),
+            "profit": int(lines[i + 3].strip())
+        }
+
+        cars.append(car)
+
 except:
 
-    print("No saved file found yet")
+    print("No saved cars found")
 
 while running:
 
@@ -157,6 +166,7 @@ while running:
         if found == False:
 
             print("Car not found")
+
     elif choice == "5":
 
         delete_name = input("Enter car name to delete: ")
@@ -169,6 +179,18 @@ while running:
 
                 cars.remove(car)
 
+                file = open("cars.txt", "w")
+
+                for saved_car in cars:
+
+                    file.write(saved_car["name"] + "\n")
+                    file.write(str(saved_car["buy"]) + "\n")
+                    file.write(str(saved_car["sell"]) + "\n")
+                    file.write(str(saved_car["profit"]) + "\n")
+                    file.write("----------------\n")
+
+                file.close()
+
                 print("Car deleted")
 
                 found = True
@@ -178,6 +200,7 @@ while running:
         if found == False:
 
             print("Car not found")
+
     else:
 
         print("Invalid option")
