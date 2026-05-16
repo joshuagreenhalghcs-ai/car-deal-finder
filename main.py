@@ -38,6 +38,20 @@ total_profit = 0
 cars_checked = 0
 
 cars = []
+try:
+
+    file = open("cars.txt", "r")
+
+    saved_data = file.read()
+
+    print("Saved Car Records:")
+    print(saved_data)
+
+    file.close()
+
+except:
+
+    print("No saved file found yet")
 
 while running:
 
