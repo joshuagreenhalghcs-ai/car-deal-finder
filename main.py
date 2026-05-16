@@ -60,6 +60,7 @@ while running:
     print("2. View Car History")
     print("3. Exit")
     print("4. Search Car")
+    print("5. Delete Car")
 
     choice = input("Choose an option: ")
 
@@ -156,7 +157,27 @@ while running:
         if found == False:
 
             print("Car not found")
+    elif choice == "5":
 
+        delete_name = input("Enter car name to delete: ")
+
+        found = False
+
+        for car in cars:
+
+            if car["name"].lower() == delete_name.lower():
+
+                cars.remove(car)
+
+                print("Car deleted")
+
+                found = True
+
+                break
+
+        if found == False:
+
+            print("Car not found")
     else:
 
         print("Invalid option")
