@@ -67,6 +67,16 @@ while running:
 
         cars.append(car)
 
+        file = open("cars.txt", "a")
+
+        file.write(car_name + "\n")
+        file.write(str(buy_price) + "\n")
+        file.write(str(sell_price) + "\n")
+        file.write(str(profit) + "\n")
+        file.write("----------------\n")
+
+        file.close()
+
         total_profit = total_profit + profit
         cars_checked = cars_checked + 1
 
