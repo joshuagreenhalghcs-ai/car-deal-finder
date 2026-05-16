@@ -53,7 +53,7 @@ try:
             "name": lines[i].strip(),
             "buy": int(lines[i + 1].strip()),
             "sell": int(lines[i + 2].strip()),
-            "profit": int(lines[i + 3].strip())
+            "profit": int(lines[i + 3].strip()),
         }
 
         cars.append(car)
@@ -80,17 +80,23 @@ while running:
 
         car_name = input("Enter car name: ")
 
-        buy_price = int(input("Enter buy price: "))
-        sell_price = int(input("Enter sell price: "))
+        while True:
+            try:
+                buy_price = int(input("Enter buy price: "))
+                break
+            except:
+                print("Invalid number. Try again.")
+
+        while True:
+            try:
+                sell_price = int(input("Enter sell price: "))
+                break
+            except:
+                print("Invalid number. Try again.")
 
         profit = sell_price - buy_price
 
-        car = {
-            "name": car_name,
-            "buy": buy_price,
-            "sell": sell_price,
-            "profit": profit
-        }
+        car = {"name": car_name, "buy": buy_price, "sell": sell_price, "profit": profit}
 
         cars.append(car)
 
@@ -232,11 +238,7 @@ while running:
 
     elif choice == "7":
 
-        sorted_cars = sorted(
-            cars,
-            key=lambda car: car["profit"],
-            reverse=True
-        )
+        sorted_cars = sorted(cars, key=lambda car: car["profit"], reverse=True)
 
         print("Cars Sorted By Profit:")
 
@@ -278,29 +280,13 @@ while running:
             file.write("\nSTATISTICS\n")
             file.write("====================\n")
 
-            file.write(
-                "Highest Profit: "
-                + str(max(profits))
-                + "\n"
-            )
+            file.write("Highest Profit: " + str(max(profits)) + "\n")
 
-            file.write(
-                "Lowest Profit: "
-                + str(min(profits))
-                + "\n"
-            )
+            file.write("Lowest Profit: " + str(min(profits)) + "\n")
 
-            file.write(
-                "Total Profit: "
-                + str(sum(profits))
-                + "\n"
-            )
+            file.write("Total Profit: " + str(sum(profits)) + "\n")
 
-            file.write(
-                "Average Profit: "
-                + str(sum(profits) / len(profits))
-                + "\n"
-            )
+            file.write("Average Profit: " + str(sum(profits) / len(profits)) + "\n")
 
         file.close()
 
