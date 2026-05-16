@@ -45,6 +45,7 @@ while running:
     print("1. Check Car Deal")
     print("2. View Car History")
     print("3. Exit")
+    print("4. Search Car")
 
     choice = input("Choose an option: ")
 
@@ -99,6 +100,38 @@ while running:
     elif choice == "3":
 
         running = False
+
+    elif choice == "4":
+
+        search_name = input("Enter car name to search: ")
+
+        found = False
+
+        for car in cars:
+
+            if car["name"] == search_name:
+
+                print("----------------")
+
+                print("Car found!")
+
+                print("Car:")
+                print(car["name"])
+
+                print("Buy Price:")
+                print(car["buy"])
+
+                print("Sell Price:")
+                print(car["sell"])
+
+                print("Profit:")
+                print(car["profit"])
+
+                found = True
+
+        if found == False:
+
+            print("Car not found")
 
     else:
 
