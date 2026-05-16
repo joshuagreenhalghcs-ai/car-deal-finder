@@ -1,39 +1,9 @@
-cars = [
-    {
-        "name": "BMW 320d",
-        "buy_price": 2000,
-        "sell_price": 3500
-    },
+print("Car Deal Finder")
 
-    {
-        "name": "Ford Fiesta",
-        "buy_price": 1200,
-        "sell_price": 2000
-    },
+buy_price = int(input("Enter buy price: "))
+sell_price = int(input("Enter sell price: "))
 
-    {
-        "name": "Audi A4",
-        "buy_price": 4000,
-        "sell_price": 5200
-    }
-]
+profit = sell_price - buy_price
 
-for car in cars:
-
-    profit = car["sell_price"] - car["buy_price"]
-
-    print(car["name"])
-print("Profit:", profit)
-
-if profit >= 1000:
-    print("GOOD DEAL")
-
-elif profit >= 500:
-    print("OK DEAL")
-
-else:
-    print("BAD DEAL")
-
-print()
-
-    
+print("Profit:")
+print(profit)
