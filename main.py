@@ -16,9 +16,28 @@ def rate_deal(profit):
         print("Bad deal")
 
 
-def show_totals(total_profit, cars_checked):
+def calculate_profit(buy_price, sell_price):
+    return sell_price - buy_price
 
-    average_profit = total_profit / cars_checked
+
+def display_car(car):
+
+    print("----------------")
+
+    print("Car:")
+    print(car["name"])
+
+    print("Buy Price:")
+    print(car["buy"])
+
+    print("Sell Price:")
+    print(car["sell"])
+
+    print("Profit:")
+    print(car["profit"])
+
+
+def show_totals(total_profit, cars_checked):
 
     print("Total profit so far:")
     print(total_profit)
@@ -26,11 +45,21 @@ def show_totals(total_profit, cars_checked):
     print("Cars checked:")
     print(cars_checked)
 
-    print("Average profit:")
-    print(average_profit)
+    if cars_checked > 0:
+
+        average_profit = total_profit / cars_checked
+
+        print("Average profit:")
+        print(average_profit)
+
+    else:
+
+        print("No cars checked yet")
 
 
-print("Car Deal Finder")
+print("====================")
+print("CAR DEAL FINDER")
+print("====================")
 
 running = True
 
@@ -81,20 +110,24 @@ while running:
         car_name = input("Enter car name: ")
 
         while True:
+
             try:
                 buy_price = int(input("Enter buy price: "))
                 break
-            except:
+
+            except ValueError:
                 print("Invalid number. Try again.")
 
         while True:
+
             try:
                 sell_price = int(input("Enter sell price: "))
                 break
-            except:
+
+            except ValueError:
                 print("Invalid number. Try again.")
 
-        profit = sell_price - buy_price
+        profit = calculate_profit(buy_price, sell_price)
 
         car = {"name": car_name, "buy": buy_price, "sell": sell_price, "profit": profit}
 
@@ -124,21 +157,15 @@ while running:
 
         print("Car History:")
 
-        for car in cars:
+        if len(cars) == 0:
 
-            print("----------------")
+            print("No cars stored")
 
-            print("Car:")
-            print(car["name"])
+        else:
 
-            print("Buy Price:")
-            print(car["buy"])
+            for car in cars:
 
-            print("Sell Price:")
-            print(car["sell"])
-
-            print("Profit:")
-            print(car["profit"])
+                display_car(car)
 
     elif choice == "3":
 
@@ -155,20 +182,9 @@ while running:
             if car["name"].lower() == search_name.lower():
 
                 print("----------------")
-
                 print("Car found!")
 
-                print("Car:")
-                print(car["name"])
-
-                print("Buy Price:")
-                print(car["buy"])
-
-                print("Sell Price:")
-                print(car["sell"])
-
-                print("Profit:")
-                print(car["profit"])
+                display_car(car)
 
                 found = True
 
