@@ -37,26 +37,47 @@ running = True
 total_profit = 0
 cars_checked = 0
 
+profits = []
+
 while running:
 
-    buy_price = int(input("Enter buy price: "))
-    sell_price = int(input("Enter sell price: "))
+    print("")
+    print("1. Check Car Deal")
+    print("2. View Profit History")
+    print("3. Exit")
 
-    profit = sell_price - buy_price
+    choice = input("Choose an option: ")
 
-    total_profit = total_profit + profit
-    cars_checked = cars_checked + 1
+    if choice == "1":
 
-    print("Profit:")
-    print(profit)
+        buy_price = int(input("Enter buy price: "))
+        sell_price = int(input("Enter sell price: "))
 
-    rate_deal(profit)
+        profit = sell_price - buy_price
 
-    show_totals(total_profit, cars_checked)
+        profits.append(profit)
 
-    again = input("Check another car? yes/no: ")
+        total_profit = total_profit + profit
+        cars_checked = cars_checked + 1
 
-    if again == "no":
+        print("Profit:")
+        print(profit)
+
+        rate_deal(profit)
+
+        show_totals(total_profit, cars_checked)
+
+    elif choice == "2":
+
+        print("Profit History:")
+        print(profits)
+
+    elif choice == "3":
+
         running = False
+
+    else:
+
+        print("Invalid option")
 
 print("Program ended")
