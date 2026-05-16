@@ -70,6 +70,7 @@ while running:
     print("3. Exit")
     print("4. Search Car")
     print("5. Delete Car")
+    print("6. View Statistics")
 
     choice = input("Choose an option: ")
 
@@ -200,7 +201,31 @@ while running:
         if found == False:
 
             print("Car not found")
+    elif choice == "6":
 
+        if len(cars) == 0:
+
+            print("No cars available")
+
+        else:
+
+            profits = []
+
+            for car in cars:
+
+                profits.append(car["profit"])
+
+            print("Highest Profit:")
+            print(max(profits))
+
+            print("Lowest Profit:")
+            print(min(profits))
+
+            print("Total Profit:")
+            print(sum(profits))
+
+            print("Average Profit:")
+            print(sum(profits) / len(profits))
     else:
 
         print("Invalid option")
