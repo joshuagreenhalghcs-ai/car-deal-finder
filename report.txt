@@ -1,0 +1,15 @@
+CAR DEAL REPORT
+====================
+
+Car: bmw
+Buy Price: 2000
+Sell Price: 3000
+Profit: 1000
+--------------------
+
+STATISTICS
+====================
+Highest Profit: 1000
+Lowest Profit: 1000
+Total Profit: 1000
+Average Profit: 1000.0
