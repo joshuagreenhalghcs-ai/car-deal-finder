@@ -71,6 +71,8 @@ while running:
     print("4. Search Car")
     print("5. Delete Car")
     print("6. View Statistics")
+    print("7. Sort Cars By Profit")
+    print("8. Export Report")
 
     choice = input("Choose an option: ")
 
@@ -201,6 +203,7 @@ while running:
         if found == False:
 
             print("Car not found")
+
     elif choice == "6":
 
         if len(cars) == 0:
@@ -226,6 +229,83 @@ while running:
 
             print("Average Profit:")
             print(sum(profits) / len(profits))
+
+    elif choice == "7":
+
+        sorted_cars = sorted(
+            cars,
+            key=lambda car: car["profit"],
+            reverse=True
+        )
+
+        print("Cars Sorted By Profit:")
+
+        for car in sorted_cars:
+
+            print("----------------")
+
+            print("Car:")
+            print(car["name"])
+
+            print("Profit:")
+            print(car["profit"])
+
+    elif choice == "8":
+
+        file = open("report.txt", "w")
+
+        file.write("CAR DEAL REPORT\n")
+        file.write("====================\n\n")
+
+        if len(cars) == 0:
+
+            file.write("No cars stored\n")
+
+        else:
+
+            profits = []
+
+            for car in cars:
+
+                profits.append(car["profit"])
+
+                file.write("Car: " + car["name"] + "\n")
+                file.write("Buy Price: " + str(car["buy"]) + "\n")
+                file.write("Sell Price: " + str(car["sell"]) + "\n")
+                file.write("Profit: " + str(car["profit"]) + "\n")
+                file.write("--------------------\n")
+
+            file.write("\nSTATISTICS\n")
+            file.write("====================\n")
+
+            file.write(
+                "Highest Profit: "
+                + str(max(profits))
+                + "\n"
+            )
+
+            file.write(
+                "Lowest Profit: "
+                + str(min(profits))
+                + "\n"
+            )
+
+            file.write(
+                "Total Profit: "
+                + str(sum(profits))
+                + "\n"
+            )
+
+            file.write(
+                "Average Profit: "
+                + str(sum(profits) / len(profits))
+                + "\n"
+            )
+
+        file.close()
+
+        print("Report exported successfully")
+
     else:
 
         print("Invalid option")
