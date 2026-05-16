@@ -109,7 +109,7 @@ while running:
 
         for car in cars:
 
-            if car["name"] == search_name:
+            if car["name"].lower() == search_name.lower():
 
                 print("----------------")
 
