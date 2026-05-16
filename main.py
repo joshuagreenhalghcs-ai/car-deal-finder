@@ -37,25 +37,34 @@ running = True
 total_profit = 0
 cars_checked = 0
 
-profits = []
+cars = []
 
 while running:
 
     print("")
     print("1. Check Car Deal")
-    print("2. View Profit History")
+    print("2. View Car History")
     print("3. Exit")
 
     choice = input("Choose an option: ")
 
     if choice == "1":
 
+        car_name = input("Enter car name: ")
+
         buy_price = int(input("Enter buy price: "))
         sell_price = int(input("Enter sell price: "))
 
         profit = sell_price - buy_price
 
-        profits.append(profit)
+        car = {
+            "name": car_name,
+            "buy": buy_price,
+            "sell": sell_price,
+            "profit": profit
+        }
+
+        cars.append(car)
 
         total_profit = total_profit + profit
         cars_checked = cars_checked + 1
@@ -69,8 +78,23 @@ while running:
 
     elif choice == "2":
 
-        print("Profit History:")
-        print(profits)
+        print("Car History:")
+
+        for car in cars:
+
+            print("----------------")
+
+            print("Car:")
+            print(car["name"])
+
+            print("Buy Price:")
+            print(car["buy"])
+
+            print("Sell Price:")
+            print(car["sell"])
+
+            print("Profit:")
+            print(car["profit"])
 
     elif choice == "3":
 
